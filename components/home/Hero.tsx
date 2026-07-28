@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-black text-white px-6">
+    <section className="min-h-screen flex items-center justify-center bg-black text-white px-6 pt-20">
       <div className="max-w-4xl text-center">
         <p className="mb-4 text-sm uppercase tracking-[0.3em] text-zinc-500">
           EBuilds

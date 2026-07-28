@@ -1,32 +1,54 @@
+"use client";
+
+import Link from "next/link";
+
 export default function Navbar() {
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-zinc-900 bg-black/80 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <a href="#" className="text-xl font-bold tracking-tight text-white">
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-zinc-800/70 bg-black/75 backdrop-blur-xl">
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+        <Link
+          href="/"
+          className="text-2xl font-bold tracking-tight text-white"
+        >
           EBuilds
-        </a>
+        </Link>
 
-        <div className="hidden items-center gap-8 text-sm text-zinc-400 md:flex">
-          <a href="#themes" className="transition hover:text-white">
+        <div className="hidden items-center gap-10 md:flex">
+          <Link
+            href="#themes"
+            className="text-sm text-zinc-400 transition hover:text-white"
+          >
             Themes
-          </a>
+          </Link>
 
-          <a href="#apps" className="transition hover:text-white">
+          <Link
+            href="#apps"
+            className="text-sm text-zinc-400 transition hover:text-white"
+          >
             Apps
-          </a>
+          </Link>
 
-          <a href="#about" className="transition hover:text-white">
+          <Link
+            href="#about"
+            className="text-sm text-zinc-400 transition hover:text-white"
+          >
             About
-          </a>
+          </Link>
 
-          <a href="#contact" className="transition hover:text-white">
+          <Link
+            href="#contact"
+            className="text-sm text-zinc-400 transition hover:text-white"
+          >
             Contact
-          </a>
+          </Link>
         </div>
 
-        <button className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-zinc-200">
+        <Link
+          href="#products"
+          className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-zinc-200"
+        >
           View Products
-        </button>
+        </Link>
       </nav>
     </header>
   );
