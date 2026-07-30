@@ -9,7 +9,9 @@ export default function CTA() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#09090b] px-6 pb-24 pt-16 text-white sm:pb-32 sm:pt-24">
+    <section className="relative isolate overflow-hidden bg-[#09090b] px-6 pb-24 pt-16 text-white sm:pb-32 sm:pt-24">
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[#09090b]" />
+
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
       <div className="relative mx-auto max-w-6xl">
@@ -28,11 +30,15 @@ export default function CTA() {
           }}
           viewport={{
             once: true,
-            amount: 0.25,
+            amount: 0.15,
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.7,
             ease: smoothEase,
+          }}
+          style={{
+            transform: "translateZ(0)",
+            backfaceVisibility: "hidden",
           }}
           className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#111113] shadow-[0_35px_100px_rgba(0,0,0,0.52)]"
         >
@@ -40,23 +46,7 @@ export default function CTA() {
 
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:60px_60px] opacity-40" />
 
-          <motion.div
-            aria-hidden="true"
-            animate={
-              reduceMotion
-                ? undefined
-                : {
-                    opacity: [0.35, 0.65, 0.35],
-                    scale: [0.96, 1.04, 0.96],
-                  }
-            }
-            transition={{
-              duration: 7,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="pointer-events-none absolute right-[-8rem] top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-violet-500/15 blur-[110px] will-change-transform"
-          />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_45%,rgba(139,92,246,0.16),transparent_34%)]" />
 
           <div className="relative grid items-center gap-14 px-8 py-16 sm:px-12 lg:grid-cols-[1fr_0.68fr] lg:px-16 lg:py-20">
             <div className="relative z-10">
