@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html {
-  background: #09090b;
+  background: #050507;
   color-scheme: dark;
   scroll-behavior: smooth;
   overscroll-behavior-y: none;
@@ -9,7 +9,7 @@ html {
 
 body {
   margin: 0;
-  background: #09090b;
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -33,7 +33,159 @@ body {
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+.living-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #050507;
+}
+
+.living-background__base,
+.living-background__gradient,
+.living-background__aurora,
+.living-background__grid,
+.living-background__spotlight {
+  position: absolute;
+  inset: 0;
+}
+
+.living-background__base {
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(106, 76, 255, 0.2),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #07070a 0%,
+      #050509 45%,
+      #030306 100%
+    );
+}
+
+.living-background__gradient {
+  inset: -15%;
+  background:
+    radial-gradient(
+      circle at 18% 35%,
+      rgba(25, 109, 255, 0.34),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 78% 25%,
+      rgba(126, 70, 255, 0.36),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 68% 78%,
+      rgba(244, 66, 255, 0.24),
+      transparent 28%
+    );
+  animation: background-drift 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.living-background__aurora {
+  background:
+    linear-gradient(
+      115deg,
+      transparent 18%,
+      rgba(122, 82, 255, 0.14) 42%,
+      rgba(50, 145, 255, 0.12) 54%,
+      transparent 72%
+    );
+  transform: translateX(-18%) rotate(-8deg);
+  animation: aurora-sweep 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.living-background__grid {
+  inset: -80px;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px
+    );
+  background-size: 92px 92px;
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    rgba(0, 0, 0, 0.75) 62%,
+    transparent 100%
+  );
+  animation: grid-drift 28s linear infinite;
+  will-change: transform;
+}
+
+.living-background__spotlight {
+  background: radial-gradient(
+    320px circle at var(--cursor-x) var(--cursor-y),
+    rgba(142, 115, 255, 0.2),
+    rgba(80, 130, 255, 0.08) 35%,
+    transparent 72%
+  );
+}
+
+.living-background__noise {
+  display: none;
+}
+
+@keyframes background-drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+@keyframes aurora-sweep {
+  0% {
+    transform: translateX(-22%) rotate(-8deg);
+  }
+
+  100% {
+    transform: translateX(16%) rotate(-4deg);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(92px, 92px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .living-background__gradient,
+  .living-background__aurora,
+  .living-background__grid {
+    animation: none;
+  }
+
+  .living-background__spotlight {
+    display: none;
+  }
 }

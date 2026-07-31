@@ -1,26 +1,32 @@
-import CTA from "../components/home/CTA";
-import Features from "../components/home/Features";
-import FeaturedProducts from "../components/home/FeaturedProducts";
-import Hero from "../components/home/Hero";
-import WhyChooseUs from "../components/home/WhyChooseUs";
+import CTA from "@/components/home/CTA";
+import Features from "@/components/home/Features";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import Hero from "@/components/home/Hero";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
 
-import Footer from "../components/layout/Footer";
-import Navbar from "../components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+
+import BackgroundScene from "@/components/motion/BackgroundScene";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
+    <div className="relative min-h-screen overflow-x-hidden">
+      <BackgroundScene />
 
-      <main>
-        <Hero />
-        <Features />
-        <FeaturedProducts />
-        <WhyChooseUs />
-        <CTA />
-      </main>
+      <div className="relative z-10">
+        <Navbar />
 
-      <Footer />
-    </>
+        <main>
+          <Hero />
+          <Features />
+          <WhyChooseUs />
+          <FeaturedProducts />
+          <CTA />
+        </main>
+
+        <Footer />
+      </div>
+    </div>
   );
 }
